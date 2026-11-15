@@ -21,6 +21,20 @@ export function useRelato(id) {
     }
   }
 
+  // Busca a versão mais recente antes de aplicar a mudança, para não apagar
+  // o voto que outro vizinho registrou enquanto esta tela estava aberta.
+  async function alterar(transformar) {
+    setSalvando(true)
+    try {
+      const atual = await relatosService.buscarRelato(id)
+      const atualizado = await relatosService.atualizarRelato(id, transformar(atual))
+      setDados(atualizado)
+      return atualizado
+    } finally {
+      setSalvando(false)
+    }
+  }
+
   async function excluir() {
     setSalvando(true)
     try {
@@ -30,5 +44,5 @@ export function useRelato(id) {
     }
   }
 
-  return { relato, carregando, erro, salvando, recarregar, salvar, excluir }
+  return { relato, carregando, erro, salvando, recarregar, salvar, alterar, excluir }
 }
