@@ -2,7 +2,7 @@
 
 // API externa (MockAPI.io) com o CRUD dos relatos de morador.
 export const API_RELATOS_URL =
-  import.meta.env.VITE_API_URL ?? 'https://6afa2d6b730c1d152f3209b1.mockapi.io/api/v1'
+  import.meta.env?.VITE_API_URL ?? 'https://6afa2d6b730c1d152f3209b1.mockapi.io/api/v1'
 
 // Bairro e centro do mapa (Campo Limpo, zona sul de São Paulo).
 export const BAIRRO = {
