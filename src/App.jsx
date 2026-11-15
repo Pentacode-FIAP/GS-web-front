@@ -1,27 +1,25 @@
 import { createBrowserRouter, RouterProvider } from 'react-router'
+import { Carregando } from './components/Estados'
 import Layout from './components/Layout'
 import ToastProvider from './components/ToastProvider'
-import Avisar from './pages/Avisar'
-import Bairro from './pages/Bairro'
-import DetalheAlertaSensor from './pages/DetalheAlertaSensor'
-import DetalheRelato from './pages/DetalheRelato'
-import Mapa from './pages/Mapa'
-import NaoEncontrado from './pages/NaoEncontrado'
-import Relatorio from './pages/Relatorio'
+
+// Cada página é carregada só quando o usuário entra nela (code splitting por rota).
+const pagina = (importar) => () => importar().then((modulo) => ({ Component: modulo.default }))
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    hydrateFallbackElement: <Carregando />,
     children: [
-      { index: true, element: <Mapa /> },
-      { path: 'avisar', element: <Avisar /> },
-      { path: 'relatos/:id', element: <DetalheRelato /> },
-      { path: 'relatos/:id/editar', element: <Avisar /> },
-      { path: 'alertas/:id', element: <DetalheAlertaSensor /> },
-      { path: 'bairro', element: <Bairro /> },
-      { path: 'relatorio', element: <Relatorio /> },
-      { path: '*', element: <NaoEncontrado /> },
+      { index: true, lazy: pagina(() => import('./pages/Mapa')) },
+      { path: 'avisar', lazy: pagina(() => import('./pages/Avisar')) },
+      { path: 'relatos/:id', lazy: pagina(() => import('./pages/DetalheRelato')) },
+      { path: 'relatos/:id/editar', lazy: pagina(() => import('./pages/Avisar')) },
+      { path: 'alertas/:id', lazy: pagina(() => import('./pages/DetalheAlertaSensor')) },
+      { path: 'bairro', lazy: pagina(() => import('./pages/Bairro')) },
+      { path: 'relatorio', lazy: pagina(() => import('./pages/Relatorio')) },
+      { path: '*', lazy: pagina(() => import('./pages/NaoEncontrado')) },
     ],
   },
 ])
