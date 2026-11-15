@@ -9,6 +9,7 @@ import { SeloGravidade, SeloStatus } from '../components/SeloStatus'
 import SinalTipo from '../components/SinalTipo'
 import { aplicarVoto, ehAutor, encerrarRelato, estaAtivo, podeVotar } from '../domain/relatos'
 import { formatarDuracao, minutosEntre } from '../domain/tempo'
+import { useAgora } from '../hooks/useAgora'
 import { useAparelho } from '../hooks/useAparelho'
 import { useRelato } from '../hooks/useRelato'
 import { useToast } from '../hooks/useToast'
@@ -19,6 +20,7 @@ export default function DetalheRelato() {
   const { aparelhoId, votoDe, registrarVoto } = useAparelho()
   const mostrarToast = useToast()
   const navegar = useNavigate()
+  const agora = useAgora()
 
   if (carregando) return <Carregando texto="Abrindo aviso…" />
   if (erro) {
@@ -32,7 +34,7 @@ export default function DetalheRelato() {
 
   const souAutor = ehAutor(relato, aparelhoId)
   const ativo = estaAtivo(relato)
-  const minutos = minutosEntre(relato.desde, relato.encerradoEm ?? new Date())
+  const minutos = minutosEntre(relato.desde, relato.encerradoEm ?? agora)
 
   async function votar(voto) {
     if (!podeVotar(relato, aparelhoId, votoDe(relato.id))) return
