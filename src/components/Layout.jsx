@@ -2,16 +2,15 @@ import { Link, Outlet } from 'react-router'
 import { useTema } from '../hooks/useTema'
 import BarraNavegacao from './BarraNavegacao'
 import Icone from './Icone'
+import Logo from './Logo'
 
 function Marca() {
   return (
-    <Link to="/" className="flex items-center gap-2" aria-label="Vizi, página inicial">
-      <span className="flex size-8 items-center justify-center rounded-lg bg-pri text-on-pri">
-        <Icone nome="local" className="size-5" />
-      </span>
-      <span className="leading-tight">
-        <span className="block text-lg font-extrabold tracking-tight">Vizi</span>
-        <span className="hidden text-xs whitespace-nowrap text-mut sm:block md:hidden lg:block">Quando falta, o bairro avisa</span>
+    <Link to="/" className="flex items-center gap-3" aria-label="Vizi, página inicial">
+      <Logo className="h-8 w-auto" />
+      <span className="hidden border-l border-line pl-3 text-xs leading-tight whitespace-nowrap text-mut sm:block md:hidden lg:block">
+        Quando falta,
+        <br />o bairro avisa
       </span>
     </Link>
   )

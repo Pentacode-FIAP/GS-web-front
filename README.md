@@ -1,3 +1,5 @@
+<p align="center"><img src="public/marca/vizi-logo.svg" alt="Vizi" width="220"></p>
+
 # Vizi · Quando falta, o bairro avisa
 
 Aplicação web do **Vizi**, a CitizenTech do grupo **Pentacode** (turma 1ESPH) para a Global Solution FIAP 2026.2. Esta é a entrega das disciplinas de **Front-end Design** e **Web Development**.
@@ -122,7 +124,7 @@ src/
 
 **Custom hooks (12):** `useCarregar`, `useRelatos`, `useRelato`, `useNovoRelato`, `useFormularioRelato`, `useAlertas`, `useAlertaSensor`, `useResumoBairro`, `useAparelho`, `useAgora`, `useTema`, `useToast`.
 
-**Componentes (21):** `Layout`, `BarraNavegacao`, `ToastProvider`, `Icone`, `Botao`, `CabecalhoPagina`, `Estados` (Carregando/Erro/Vazio), `SeloStatus`, `SinalTipo`, `FiltroTipos`, `AlertaCard`, `MapaBairro`, `SeletorTipo`, `SeletorGravidade`, `SeletorLocal`, `FormularioRelato`, `PainelVoto`, `AcoesAutor`, `LinhaDoTempo`, `GraficoSerie`, `BarraHoras`.
+**Componentes (22):** `Logo`, `Layout`, `BarraNavegacao`, `ToastProvider`, `Icone`, `Botao`, `CabecalhoPagina`, `Estados` (Carregando/Erro/Vazio), `SeloStatus`, `SinalTipo`, `FiltroTipos`, `AlertaCard`, `MapaBairro`, `SeletorTipo`, `SeletorGravidade`, `SeletorLocal`, `FormularioRelato`, `PainelVoto`, `AcoesAutor`, `LinhaDoTempo`, `GraficoSerie`, `BarraHoras`.
 
 ### Por que os sensores são simulados
 
