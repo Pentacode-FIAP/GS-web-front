@@ -51,16 +51,24 @@ export function resumirBairro(alertasSensor, relatos, agora = new Date(), dias =
   }
 }
 
-// Dia com mais minutos sem serviço (o aviso conta no dia em que começou).
+// Dia com mais minutos sem serviço. Cada aviso é dividido pelos dias em que aconteceu,
+// para um problema de 3 dias não contar inteiro no dia em que começou.
 function calcularPiorDia(avisos, inicioJanela, agora) {
   const dias = {}
   for (const aviso of avisos) {
     if (!TIPOS_COM_HORAS.includes(aviso.tipo)) continue
-    // Data local no formato AAAA-MM-DD (o locale sueco usa esse formato).
-    const chave = new Date(Math.max(new Date(aviso.desde), inicioJanela)).toLocaleDateString('sv-SE')
-    dias[chave] ??= { data: chave, minutos: 0, tipos: new Set() }
-    dias[chave].minutos += minutosNaJanela(aviso, inicioJanela, agora)
-    dias[chave].tipos.add(aviso.tipo)
+    let inicio = new Date(Math.max(new Date(aviso.desde), inicioJanela))
+    const fim = aviso.encerradoEm ? new Date(aviso.encerradoEm) : agora
+    while (inicio < fim) {
+      const meiaNoite = new Date(inicio.getFullYear(), inicio.getMonth(), inicio.getDate() + 1)
+      const corte = meiaNoite < fim ? meiaNoite : fim
+      // Data local no formato AAAA-MM-DD (o locale sueco usa esse formato).
+      const chave = inicio.toLocaleDateString('sv-SE')
+      dias[chave] ??= { data: chave, minutos: 0, tipos: new Set() }
+      dias[chave].minutos += minutosEntre(inicio, corte)
+      dias[chave].tipos.add(aviso.tipo)
+      inicio = corte
+    }
   }
   const pior = Object.values(dias).sort((a, b) => b.minutos - a.minutos)[0]
   if (!pior || pior.minutos === 0) return null
