@@ -7,7 +7,7 @@ export default function AcoesAutor({ relatoId, ativo, salvando, aoEncerrar, aoEx
   const [confirmandoExclusao, setConfirmandoExclusao] = useState(false)
 
   return (
-    <section aria-labelledby="titulo-autor" className="rounded-2xl border border-line bg-card p-4">
+    <section aria-labelledby="titulo-autor" className="rounded-lg border border-line bg-card p-4">
       <h2 id="titulo-autor" className="font-bold">
         Seu aviso
       </h2>
@@ -28,7 +28,7 @@ export default function AcoesAutor({ relatoId, ativo, salvando, aoEncerrar, aoEx
         )}
 
         {confirmandoExclusao ? (
-          <div role="alert" className="rounded-xl border border-bad/30 bg-badbg p-3">
+          <div role="alert" className="rounded-lg border border-bad/30 bg-badbg p-3">
             <p className="mb-2 text-sm font-semibold text-bad">Apagar este aviso? Isso não pode ser desfeito.</p>
             <div className="grid grid-cols-2 gap-2">
               <Botao variante="contorno" className="bg-card" onClick={() => setConfirmandoExclusao(false)}>

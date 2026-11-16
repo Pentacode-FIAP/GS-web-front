@@ -11,7 +11,7 @@ export default function SeletorGravidade({ valor, aoMudar, erro }) {
   return (
     <fieldset>
       <legend className="mb-2 text-sm font-bold">Qual a gravidade?</legend>
-      <div className="grid grid-cols-3 overflow-hidden rounded-xl border-[1.5px] border-line">
+      <div className="grid grid-cols-3 overflow-hidden rounded-lg border-[1.5px] border-line">
         {Object.values(GRAVIDADES).map((g) => (
           <button
             key={g.id}

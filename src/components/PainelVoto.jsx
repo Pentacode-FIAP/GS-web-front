@@ -15,7 +15,7 @@ export default function PainelVoto({ relato, votoAnterior, ehAutor, salvando, ao
   const bloqueado = encerrado || ehAutor || Boolean(votoAnterior) || salvando
 
   return (
-    <section aria-labelledby="titulo-voto" className="rounded-2xl border border-line bg-card p-4">
+    <section aria-labelledby="titulo-voto" className="rounded-lg border border-line bg-card p-4">
       <h2 id="titulo-voto" className="font-bold">
         Isso ainda acontece aí?
       </h2>

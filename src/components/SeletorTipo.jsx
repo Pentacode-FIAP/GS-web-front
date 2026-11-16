@@ -16,7 +16,7 @@ export default function SeletorTipo({ valor, aoMudar, erro }) {
               type="button"
               aria-pressed={ativo}
               onClick={() => aoMudar(tipo)}
-              className={`flex min-h-20 flex-col items-center justify-center gap-1.5 rounded-xl border-[1.5px] px-1 text-sm font-semibold transition-colors ${
+              className={`flex min-h-20 flex-col items-center justify-center gap-1.5 rounded-lg border-[1.5px] px-1 text-sm font-semibold transition-colors ${
                 ativo ? 'border-pri bg-pri-l' : 'border-line bg-card hover:border-pri'
               }`}
             >

@@ -35,22 +35,22 @@ export default function Relatorio() {
       )}
 
       <div className="mb-4 grid grid-cols-2 gap-3">
-        <div className="rounded-2xl border border-line bg-card p-4">
+        <div className="rounded-lg border border-line bg-card p-4">
           <p className="text-3xl font-extrabold">{minutosParaHoras(resumo.minutosTotal).toLocaleString('pt-BR')} h</p>
           <p className="text-sm text-mut">sem serviço</p>
         </div>
-        <div className="rounded-2xl border border-line bg-card p-4">
+        <div className="rounded-lg border border-line bg-card p-4">
           <p className="text-3xl font-extrabold">{resumo.totalAvisos}</p>
           <p className="text-sm text-mut">{resumo.totalAvisos === 1 ? 'aviso confirmado' : 'avisos confirmados'}</p>
         </div>
       </div>
 
-      <section aria-labelledby="titulo-texto" className="rounded-2xl border border-line bg-card p-4">
+      <section aria-labelledby="titulo-texto" className="rounded-lg border border-line bg-card p-4">
         <h2 id="titulo-texto" className="mb-2 font-bold">
           Texto pronto para reclamar
         </h2>
-        <p className="rounded-xl bg-pri-l p-3 text-[15px] leading-relaxed">{textoReclamacao}</p>
-        <div className="mt-3 grid grid-cols-2 gap-2">
+        <p className="border-l-4 border-pri bg-bg py-3 pr-3 pl-4 text-base leading-relaxed">{textoReclamacao}</p>
+        <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
           <Botao onClick={copiarTexto}>
             <Icone nome="copiar" className="size-4" />
             Copiar texto
@@ -66,19 +66,19 @@ export default function Relatorio() {
       </section>
 
       <section aria-labelledby="titulo-avisos" className="mt-4">
-        <h2 id="titulo-avisos" className="mb-2 text-sm font-bold text-mut uppercase">
+        <h2 id="titulo-avisos" className="mb-2 font-bold">
           Avisos que entram no relatório
         </h2>
         {resumo.avisos.length === 0 ? (
           <Vazio titulo="Nenhum aviso confirmado no período" />
         ) : (
-          <ul className="flex flex-col gap-2">
+          <ul className="divide-y divide-line overflow-hidden rounded-lg border border-line bg-card">
             {resumo.avisos.map((aviso) => (
-              <li key={aviso.id} className="flex items-center gap-3 rounded-xl border border-line bg-card p-3">
+              <li key={aviso.id} className="flex items-center gap-3 px-4 py-3">
                 <SinalTipo tipo={aviso.tipo} />
                 <div className="min-w-0">
                   <p className="font-semibold">{aviso.titulo}</p>
-                  <p className="truncate text-sm text-mut">
+                  <p className="text-sm text-mut">
                     {aviso.local} · desde {formatarDataHora(aviso.desde)}
                     {aviso.encerradoEm ? ` até ${formatarDataHora(aviso.encerradoEm)}` : ' · ainda acontecendo'}
                   </p>

@@ -57,21 +57,21 @@ export default function SeletorLocal({ local, posicao, aoMudarLocal, aoMudarPosi
     <fieldset>
       <legend className="mb-2 text-sm font-bold">Onde?</legend>
 
-      <label htmlFor="local" className="sr-only">
+      <label htmlFor="local" className="mb-1 block text-sm text-mut">
         Rua ou ponto de referência
       </label>
       <input
         id="local"
         value={local}
         onChange={(e) => aoMudarLocal(e.target.value)}
-        placeholder="Rua ou ponto de referência. Ex.: Rua das Flores, perto da padaria"
+        placeholder="Ex.: Rua das Flores, perto da padaria"
         maxLength={80}
         aria-invalid={Boolean(erros.local)}
-        className="min-h-12 w-full rounded-xl border-[1.5px] border-line bg-card px-3 text-[15px] outline-none placeholder:text-mut focus:border-pri"
+        className="min-h-12 w-full rounded-lg border border-line bg-card px-3 text-base outline-none placeholder:text-mut focus:border-pri"
       />
       {erros.local && <p className="mt-1 text-sm font-semibold text-bad">{erros.local}</p>}
 
-      <div className="mt-2 h-56 overflow-hidden rounded-xl border border-line md:h-64">
+      <div className="mt-2 h-56 overflow-hidden rounded-lg border border-line md:h-64">
         <MapContainer center={[BAIRRO.centro.lat, BAIRRO.centro.lng]} zoom={BAIRRO.zoom} className="size-full">
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

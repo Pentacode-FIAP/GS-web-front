@@ -32,7 +32,7 @@ function NovoAviso() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <CabecalhoPagina titulo="O que está faltando?" subtitulo="Leva menos de 1 minuto." voltarPara="/" />
+      <CabecalhoPagina titulo="Avisar um problema" subtitulo="Leva menos de 1 minuto." voltarPara="/" />
       <FormularioRelato
         rotuloEnviar="Enviar aviso"
         salvando={salvando}

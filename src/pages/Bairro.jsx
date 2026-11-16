@@ -24,7 +24,7 @@ export default function Bairro() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <CabecalhoPagina titulo={BAIRRO.nome} subtitulo={`Resumo dos últimos ${resumo.dias} dias · dados simulados`} />
+      <CabecalhoPagina titulo={BAIRRO.nome} subtitulo={`Resumo dos últimos ${resumo.dias} dias`} />
 
       {erro && (
         <div className="mb-4">
@@ -32,16 +32,19 @@ export default function Bairro() {
         </div>
       )}
 
-      <section className="rounded-2xl bg-pri p-5 text-on-pri">
-        <p className="text-sm font-semibold opacity-90">Horas sem serviço no bairro</p>
-        <p className="text-5xl font-extrabold tracking-tight">{horas.toLocaleString('pt-BR')} h</p>
-        <p className="mt-1 text-sm opacity-90">
+      <section className="border-b border-line pb-5">
+        <p className="text-mut">Horas sem serviço no bairro</p>
+        <p className="text-6xl font-extrabold tracking-tight tabular-nums">
+          {horas.toLocaleString('pt-BR')}
+          <span className="ml-1 text-3xl text-mut">h</span>
+        </p>
+        <p className="mt-1 text-mut">
           {resumo.tiposComRegistro} {resumo.tiposComRegistro === 1 ? 'tipo de problema' : 'tipos de problema'} ·{' '}
           {resumo.totalAvisos} {resumo.totalAvisos === 1 ? 'aviso confirmado' : 'avisos confirmados'}
         </p>
       </section>
 
-      <section aria-labelledby="titulo-tipos" className="mt-4 rounded-2xl border border-line bg-card p-4">
+      <section aria-labelledby="titulo-tipos" className="mt-5 rounded-lg border border-line bg-card p-4">
         <h2 id="titulo-tipos" className="mb-3 font-bold">
           Tempo sem cada serviço
         </h2>
@@ -56,16 +59,19 @@ export default function Bairro() {
       </section>
 
       {resumo.piorDia && (
-        <section className="mt-4 flex items-center gap-3 rounded-2xl border border-line bg-card p-4">
-          <span className="flex size-10 items-center justify-center rounded-full bg-warnbg text-warn">
+        <section className="mt-4 flex items-center gap-3 rounded-lg border border-line bg-card p-4">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-warnbg text-warn">
             <Icone nome="alerta" />
           </span>
           <div>
             <p className="text-sm text-mut">Pior dia do período</p>
             <p className="font-bold">
-              {formatarDia(resumo.piorDia.data)} · {formatarDuracao(resumo.piorDia.minutos)} sem serviço
+              {formatarDia(resumo.piorDia.data)}
             </p>
-            <p className="text-sm text-mut">{resumo.piorDia.tipos.map((t) => infoTipo(t).rotulo.toLowerCase()).join(', ')}</p>
+            <p className="text-sm text-mut">
+              {formatarDuracao(resumo.piorDia.minutos)} sem serviço, somando{' '}
+              {resumo.piorDia.tipos.map((t) => infoTipo(t).rotulo.toLowerCase()).join(', ')}
+            </p>
           </div>
         </section>
       )}

@@ -16,7 +16,7 @@ export function Erro({ erro, aoTentarDeNovo, compacto = false }) {
   return (
     <div
       role="alert"
-      className={`flex flex-col items-start gap-3 rounded-2xl border border-bad/30 bg-badbg text-bad ${compacto ? 'p-3' : 'p-5'}`}
+      className={`flex flex-col items-start gap-3 rounded-lg border border-bad/30 bg-badbg text-bad ${compacto ? 'p-3' : 'p-5'}`}
     >
       <p className="flex items-start gap-2 text-sm font-semibold">
         <Icone nome="alerta" className="mt-0.5 size-4 shrink-0" />
@@ -34,7 +34,7 @@ export function Erro({ erro, aoTentarDeNovo, compacto = false }) {
 
 export function Vazio({ titulo, children }) {
   return (
-    <div className="rounded-2xl border border-dashed border-line px-5 py-8 text-center">
+    <div className="rounded-lg border border-dashed border-line px-5 py-8 text-center">
       <p className="font-bold">{titulo}</p>
       {children && <div className="mt-1 text-sm text-mut">{children}</div>}
     </div>

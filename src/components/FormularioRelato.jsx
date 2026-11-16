@@ -39,7 +39,7 @@ export default function FormularioRelato({ inicial, rotuloEnviar, salvando, aoEn
           rows={3}
           maxLength={LIMITE_DESCRICAO}
           placeholder="Ex.: caiu depois da chuva, o poste da esquina está piscando."
-          className="w-full rounded-xl border-[1.5px] border-line bg-card px-3 py-2.5 text-[15px] outline-none placeholder:text-mut focus:border-pri"
+          className="w-full rounded-lg border border-line bg-card px-3 py-2.5 text-base outline-none placeholder:text-mut focus:border-pri"
         />
         <p className="text-right text-xs text-mut">
           {form.descricao.length}/{LIMITE_DESCRICAO}

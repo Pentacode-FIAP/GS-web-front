@@ -14,7 +14,7 @@ function criarPino(alerta, destacado) {
   const tamanho = destacado ? 44 : 34
   const forma = alerta.fonte === 'sensor' ? 'border-radius:10px' : 'border-radius:999px'
   const icone = renderToStaticMarkup(<Icone nome={info.icone} className="size-[55%]" />)
-  const html = `<span style="display:flex;align-items:center;justify-content:center;width:${tamanho}px;height:${tamanho}px;${forma};background:${info.cor};color:var(--card);border:3px solid var(--card);box-shadow:0 4px 12px rgba(0,0,0,.3)">${icone}</span>`
+  const html = `<span style="display:flex;align-items:center;justify-content:center;width:${tamanho}px;height:${tamanho}px;${forma};background:${info.cor};color:var(--card);border:3px solid var(--card);box-shadow:0 2px 6px rgba(0,0,0,.35)">${icone}</span>`
   return L.divIcon({ html, className: 'vizi-pin', iconSize: [tamanho, tamanho], iconAnchor: [tamanho / 2, tamanho / 2] })
 }
 
@@ -32,7 +32,7 @@ export default function MapaBairro({ alertas, destacadoId, aoDestacar, className
   const destacado = alertas.find((a) => a.id === destacadoId)
 
   return (
-    <div className={`relative isolate overflow-hidden rounded-2xl border border-line ${className}`}>
+    <div className={`relative isolate overflow-hidden rounded-lg border border-line ${className}`}>
       <MapContainer center={[BAIRRO.centro.lat, BAIRRO.centro.lng]} zoom={BAIRRO.zoom} scrollWheelZoom className="size-full">
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

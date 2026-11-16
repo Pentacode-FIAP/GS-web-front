@@ -1,16 +1,17 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/public-sans';
 @import 'leaflet/dist/leaflet.css';
 
 /* Paleta do protótipo de média fidelidade (vizi_prototipo.html) */
 :root {
-  --bg: #eef2f1;
-  --ink: #14201f;
-  --mut: #5b6b69;
+  --bg: #f5f4f0;
+  --ink: #1a1d1c;
+  --mut: #5c6360;
   --card: #ffffff;
-  --line: #dbe3e1;
-  --pri: #0f766e;
-  --pri-d: #0b5a54;
-  --pri-l: #d9f0ed;
+  --line: #e2e0d9;
+  --pri: #0d6b63;
+  --pri-d: #0a524c;
+  --pri-l: #e3f1ee;
   --on-pri: #ffffff;
   --energia: #d97706;
   --sinal: #4f46e5;
@@ -29,11 +30,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #0c1413;
-    --ink: #e7efed;
-    --mut: #9db0ad;
-    --card: #16211f;
-    --line: #26363a;
+    --bg: #121514;
+    --ink: #ecefed;
+    --mut: #a3aba8;
+    --card: #1b1f1e;
+    --line: #2d3230;
     --pri: #2dd4bf;
     --pri-d: #5eead4;
     --pri-l: #12332f;
@@ -55,11 +56,11 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #0c1413;
-  --ink: #e7efed;
-  --mut: #9db0ad;
-  --card: #16211f;
-  --line: #26363a;
+  --bg: #121514;
+  --ink: #ecefed;
+  --mut: #a3aba8;
+  --card: #1b1f1e;
+  --line: #2d3230;
   --pri: #2dd4bf;
   --pri-d: #5eead4;
   --pri-l: #12332f;
@@ -102,13 +103,28 @@
   --color-warnbg: var(--warnbg);
   --color-bad: var(--bad);
   --color-badbg: var(--badbg);
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Public Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
 @layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     @apply bg-bg text-ink font-sans antialiased;
-    line-height: 1.45;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  button,
+  a,
+  [role='button'] {
+    touch-action: manipulation;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
   }
 
   :focus-visible {
