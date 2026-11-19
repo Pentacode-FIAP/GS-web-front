@@ -33,6 +33,7 @@ Aplicação web do **Vizi**, a CitizenTech do grupo **Pentacode** (turma 1ESPH) 
 ## Links
 
 - **Deploy (Vercel):** https://gs2webfront-2dvg.vercel.app/
+- **Vídeo de apresentação (YouTube):** https://www.youtube.com/watch?v=fUw81lHC85Y
 - **Repositório:** https://github.com/Pentacode-FIAP/gs2webfront
 - **API externa (MockAPI):** https://6afa2d6b730c1d152f3209b1.mockapi.io/api/v1/relatos
 
