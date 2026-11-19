@@ -16,7 +16,7 @@ Aplicação web do **Vizi**, a CitizenTech do grupo **Pentacode** (turma 1ESPH) 
 | **Problema, em uma frase** | Quando um serviço essencial falta no bairro, ninguém sabe se é só na sua casa, há quanto tempo está assim nem como cobrar a empresa responsável |
 | **Como funciona** | Sensores no poste (ESP32) detectam falta de energia, queda de sinal e alagamento. Moradores avisam pelo app o que o sensor não vê (falta d'água, trânsito). Os vizinhos confirmam ou negam cada aviso. O app soma as horas sem serviço e gera um texto pronto para reclamar na ouvidoria |
 | **O que cada parte faz** | **Edge:** sensor que decide o estado sozinho e publica no FIWARE. **Front/Web (este repositório):** mapa, avisos, validação pelos vizinhos, resumo e relatório. **Python:** lógica de estados. **Experiência:** jornada, requisitos e protótipo |
-| **Link do repositório** | _preencher com o link do GitHub_ |
+| **Link do repositório** | https://github.com/Pentacode-FIAP/gs2webfront |
 | **Indicador de impacto** | Horas sem serviço confirmadas por mês no bairro e quantidade de reclamações enviadas com o texto do relatório |
 | **ODS conectados** | **ODS 11** (cidades e comunidades sustentáveis), **ODS 9** (infraestrutura), **ODS 10** (redução das desigualdades), **ODS 13** (ação contra a mudança do clima: alagamentos) |
 
@@ -32,8 +32,17 @@ Aplicação web do **Vizi**, a CitizenTech do grupo **Pentacode** (turma 1ESPH) 
 
 ## Links
 
-- **Deploy:** _preencher com o link da Vercel_
-- **API externa (MockAPI):** `https://6afa2d6b730c1d152f3209b1.mockapi.io/api/v1/relatos`
+- **Deploy (Vercel):** https://gs2webfront-2dvg.vercel.app/
+- **Repositório:** https://github.com/Pentacode-FIAP/gs2webfront
+- **API externa (MockAPI):** https://6afa2d6b730c1d152f3209b1.mockapi.io/api/v1/relatos
+
+### Roteiro rápido para testar
+
+1. Abra o [deploy](https://gs2webfront-2dvg.vercel.app/) e veja no mapa os alertas de sensor (pino quadrado) e os avisos de morador (pino redondo).
+2. Clique em **Avisar**, escolha o tipo, a gravidade e o lugar no mapa e envie. O aviso é criado na MockAPI (**POST**).
+3. Abra o aviso criado: como autor, você pode **editar** e **encerrar** (**PUT**) ou **apagar** (**DELETE**).
+4. Para votar ("Sim, ainda" ou "Já voltou"), abra um aviso de outra pessoa ou use uma janela anônima, porque o autor não vota no próprio aviso. Com 2 confirmações ele vira **Confirmado**.
+5. Veja o resumo em **Bairro** e o texto pronto e o CSV em **Relatório**.
 
 ## Funcionalidades
 
@@ -71,7 +80,7 @@ Os números de RN1 e RN2 ficam em `src/config.js` (`REGRAS`).
 
 ## Pré-requisitos
 
-- **Node.js 20** ou mais recente (testado no 24) e **npm**
+- **Node.js 20.19** ou mais recente (testado no 24) e **npm**
 - Internet: a API de relatos e os mapas são online
 
 ## Como rodar
@@ -97,7 +106,9 @@ A URL da API já vem configurada. Para usar outra, copie `.env.example` para `.e
 
 ### Deploy (Vercel)
 
-Importe o repositório na Vercel com o preset **Vite** (build `npm run build`, saída `dist`). O `vercel.json` redireciona todas as rotas para o `index.html`, o que permite abrir direto um link como `/relatos/3`.
+A aplicação está publicada em https://gs2webfront-2dvg.vercel.app/.
+
+Para publicar de novo, importe o repositório na Vercel com o preset **Vite** (build `npm run build`, saída `dist`). Não precisa de variável de ambiente. O `vercel.json` redireciona todas as rotas para o `index.html`, o que permite abrir direto um link como `/relatos/3`.
 
 ## Arquitetura
 
